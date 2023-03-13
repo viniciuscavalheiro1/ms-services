@@ -1,0 +1,16 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: vinicius-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/viniciuscavalheiro1/vinicius-config-server
+          default-label: main
+          search-paths:
+            - 'greeting-service*'
+#          Username caso o repo seja priavado
+#          username: username
+#          password: password
