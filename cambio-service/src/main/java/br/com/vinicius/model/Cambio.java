@@ -1,29 +1,26 @@
 package br.com.vinicius.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+
 @Entity(name = "cambio")
 public class Cambio implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "from_currency", nullable = false, length = 3)
-    private String form;
-
+    private String from;
     @Column(name = "to_currency", nullable = false, length = 3)
     private String to;
-
-    @Column(name = "conversion_factor", nullable = false)
+    @Column(nullable = false)
     private BigDecimal conversionFactor;
-
     @Transient
     private BigDecimal convertedValue;
     @Transient
@@ -35,7 +32,7 @@ public class Cambio implements Serializable {
 
     public Cambio(Long id, String form, String to, BigDecimal conversionFactor, BigDecimal convertedValue, String environment) {
         this.id = id;
-        this.form = form;
+        this.from = form;
         this.to = to;
         this.conversionFactor = conversionFactor;
         this.convertedValue = convertedValue;
@@ -51,11 +48,11 @@ public class Cambio implements Serializable {
     }
 
     public String getForm() {
-        return form;
+        return from;
     }
 
     public void setForm(String form) {
-        this.form = form;
+        this.from = form;
     }
 
     public String getTo() {
@@ -95,11 +92,11 @@ public class Cambio implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cambio cambio = (Cambio) o;
-        return Objects.equals(id, cambio.id) && Objects.equals(form, cambio.form) && Objects.equals(to, cambio.to) && Objects.equals(conversionFactor, cambio.conversionFactor) && Objects.equals(convertedValue, cambio.convertedValue) && Objects.equals(environment, cambio.environment);
+        return Objects.equals(id, cambio.id) && Objects.equals(from, cambio.from) && Objects.equals(to, cambio.to) && Objects.equals(conversionFactor, cambio.conversionFactor) && Objects.equals(convertedValue, cambio.convertedValue) && Objects.equals(environment, cambio.environment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, form, to, conversionFactor, convertedValue, environment);
+        return Objects.hash(id, from, to, conversionFactor, convertedValue, environment);
     }
 }

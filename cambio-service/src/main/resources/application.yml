@@ -4,19 +4,20 @@ spring:
   application:
     name: cambio-service
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/cambio_service
-    username: cambio_service
-    password: senha123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cambio_service?useTimezone=true&serverTimeZone=UTC
+    username: root
+    password: Senha123@#
   jpa:
     hibernate:
       dll-auto: update
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
   flyway:
-    url: jdbc:postgresql://localhost:5432/
+    url: jdbc:mysql://localhost:3306/
     schemas: cambio_service
-    user: cambio_service
-    password: senha123
+    user: root
+    password: Senha123@#
+    baseline-on-migrate: true
