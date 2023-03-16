@@ -4,6 +4,6 @@ import br.com.vinicius.model.Cambio;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CambioRepository extends JpaRepository<Cambio, Long> {
-    Cambio findByFromTo(String from, String to);
+    Cambio findByFromAndTo(String from, String to);
 
 }
