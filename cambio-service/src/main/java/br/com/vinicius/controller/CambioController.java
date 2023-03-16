@@ -27,7 +27,7 @@ public class CambioController {
             @PathVariable("amount") BigDecimal amount,
             @PathVariable("from") String from,
             @PathVariable("to") String to) {
-        var cambio = cambioRepository.findByFromTo(from, to);
+        var cambio = cambioRepository.findByFromAndTo(from, to);
         if (cambio == null) throw new RuntimeException("Currency Unsupported");
         var port = environment.getProperty("local.server.port");
         BigDecimal conversionFactor = cambio.getConversionFactor();
