@@ -1,33 +1,25 @@
-package br.com.vinicius.model;
+package br.com.vinicius.response;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-
-@Entity(name = "cambio")
 public class Cambio implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
-    @Column(name = "from_currency", nullable = false, length = 3)
     private String from;
-    @Column(name = "to_currency", nullable = false, length = 3)
     private String to;
-    @Column(nullable = false)
-    private BigDecimal conversionFactor;
-    @Transient
-    private BigDecimal convertedValue;
-    @Transient
+    private Double conversionFactor;
+    private Double convertedValue;
     private String environment;
 
     public Cambio() {
 
     }
 
-    public Cambio(Long id, String form, String to, BigDecimal conversionFactor, BigDecimal convertedValue, String environment) {
+    public Cambio(Long id, String form, String to, Double conversionFactor, Double convertedValue, String environment) {
         this.id = id;
         this.from = form;
         this.to = to;
@@ -60,19 +52,19 @@ public class Cambio implements Serializable {
         this.to = to;
     }
 
-    public BigDecimal getConversionFactor() {
+    public Double getConversionFactor() {
         return conversionFactor;
     }
 
-    public void setConversionFactor(BigDecimal conversionFactor) {
+    public void setConversionFactor(Double conversionFactor) {
         this.conversionFactor = conversionFactor;
     }
 
-    public BigDecimal getConvertedValue() {
+    public Double getConvertedValue() {
         return convertedValue;
     }
 
-    public void setConvertedValue(BigDecimal convertedValue) {
+    public void setConvertedValue(Double convertedValue) {
         this.convertedValue = convertedValue;
     }
 

@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 8100
 
 eureka:
   client:
@@ -8,12 +8,16 @@ eureka:
 
 spring:
   application:
-    name: cambio-service
+    name: book-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cambio_service?useTimezone=true&serverTimeZone=UTC
+    url: jdbc:mysql://localhost:3306/book_service?useTimezone=true&serverTimeZone=UTC
     username: root
     password: Senha123@#
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+    default-property-inclusion: NON_NULL
   jpa:
     hibernate:
       dll-auto: create
@@ -23,7 +27,7 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
   flyway:
     url: jdbc:mysql://localhost:3306/
-    schemas: cambio_service
+    schemas: book_service
     user: root
     password: Senha123@#
     baseline-on-migrate: true
